@@ -6,6 +6,9 @@ const pool = require('./db');
 // create express app
 const app = express();
 
+// port 
+const PORT = process.env.PORT || 5000;
+
 // middleware
 app.use(cors());
 app.use(express.json());
@@ -15,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // root route
 app.get('/', (req, res) => {
-    res.send('Server is now listening at PORT 5000...');
+    res.send(`Server is now listening at ${PORT}...`);
 });
 
 // login and register routes
@@ -159,4 +162,4 @@ app.delete('/todos/delete_todo/:tid/:uid', async (req, res) => {
     }
 });
 
-app.listen(5000, () => console.log('server is now listening at PORT 5000...'));
+app.listen(PORT, () => console.log(`server is now listening at ${PORT}...`));
